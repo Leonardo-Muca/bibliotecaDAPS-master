@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ClibrosComponent } from '../app/components/clibros/clibros.component';
 import { CusuariosComponent } from '../app/components/cusuarios/cusuarios.component';
 import { CplibrosComponent } from '../app/components/cplibros/cplibros.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CplibrosComponent } from '../app/components/cplibros/cplibros.component
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],
