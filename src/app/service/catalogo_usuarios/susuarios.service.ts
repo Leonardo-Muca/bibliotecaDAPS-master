@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
-import {HttpClient, HttpClientModule} from '@angular/common/http'
+import { HttpClient, HttpClientModule } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
 })
 export class SusuariosService {
-  url = environment.url+'/usuario';
+  url = environment.url + '/usuario';
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) { }
 
-  recuperarusuarios(){
+  recuperarusuarios() {
     return this.http.get(this.url).toPromise();
   }
 
-  altauser(usuario){
-    return this.http.post(this.url,usuario).toPromise();
+  altauser(usuario) {
+    return this.http.post(this.url, usuario).toPromise();
+  }
+
+  modificaruser(usuario) {
+    return this.http.put(this.url, usuario).toPromise();
   }
 }

@@ -5,12 +5,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 
+// Para trabajar con formularios
+import { FormsModule } from '@angular/forms';
+// Para trabajar con formularios reactivos
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ClibrosComponent } from '../app/components/clibros/clibros.component';
-import { CusuariosComponent } from '../app/components/cusuarios/cusuarios.component';
-import { CplibrosComponent } from '../app/components/cplibros/cplibros.component';
+import { CusuariosComponent } from './components/cusuarios/cusuarios.component';
+import { ClibrosComponent } from './components/clibros/clibros.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http'
 
 @NgModule({
@@ -18,14 +22,15 @@ import {HttpClient, HttpClientModule} from '@angular/common/http'
     AppComponent,
     BooksListComponent,
     NavbarComponent,
-    ClibrosComponent,
     CusuariosComponent,
-    CplibrosComponent
+    ClibrosComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

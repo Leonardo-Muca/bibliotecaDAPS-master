@@ -1,1 +1,129 @@
-<p>clibros works!</p>
+<h3 class="display-4 text-center mb-3 text-primary">Nuevo libro</h3>
+<h5 class="text-center text-primary"><i class="fas fa-book-medical"></i></h5>
+
+<!-- <hr>
+
+<form autocomplete="off" [formGroup]="form" (ngSubmit)="enviar()">
+    <div>
+        
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="title">Título:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" name="" placeholder="Título" formControlName="title" [class.is-invalid]="validTitle">
+                <div *ngIf="validTitle" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+            
+        </div>
+   
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="autor">Autor:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" name="" placeholder="Autor" formControlName="autor" [class.is-invalid]="validAutor">
+                <div *ngIf="validAutor" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="editorial">Editorial:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" name="" placeholder="Editorial" formControlName="editorial" [class.is-invalid]="validEditorial">
+                <div *ngIf="validEditorial" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+        </div>
+  
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="year">Año de publicación:</label>
+            <div class="col-9">
+                <input class="form-control" type="number" name="" placeholder="Año de publicación" formControlName="year" [class.is-invalid]="validYear">
+                <div *ngIf="validYear" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="code">Código:</label>
+            <div class="col-9">
+                <input class="form-control" type="number" name="" placeholder="Código" formControlName="code" [class.is-invalid]="validCode">
+                <div *ngIf="validCode" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+        </div>
+
+        <hr>
+
+
+        <div class="form-group row">
+            <div type="button" class="col-12 input-group mt-3">
+                <button type="submit" class="btn btn-outline-primary btn-block">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div *ngIf="submited" class="alert alert-success text-center" role="alert">
+    USUARIO CREADO CON ÉXITO
+  </div> -->
+
+
+<form autocomplete="off" (ngSubmit)="altalib(forma)" #forma="ngForm">
+
+    <div>
+        <input class="form-control" type="text" placeholder="Titulo del Libro" id=" validationServer01"
+            [(ngModel)]="lib.titulo" name="titulo" #nombre="ngModel" required>
+
+        <div class="invalid-feedback">
+
+            El nombre es necesario.
+
+        </div>
+    </div>
+
+    <p></p>
+
+    <div>
+        <input class="form-control" type="text" placeholder="Autor" id=" validationServer02" name="autor"
+            [(ngModel)]="lib.autor" #password="ngModel" required>
+
+        <div class="invalid-feedback">
+
+            El Autor es necesario.
+
+        </div>
+    </div>
+
+    <p></p>
+
+    <div>
+        <input class="form-control" type="text" placeholder="Editorial" id=" validationServer03" name="editorial"
+            [(ngModel)]="lib.editorial" #email="ngModel" required>
+
+        <div class="invalid-feedback">
+
+            La editorial es necesaria.
+
+        </div>
+    </div>
+    <p></p>
+    <button class="btn btn-success o" type="submit">Guardar libro</button>
+
+</form>
+
+<p></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Titulo
+            </th>
+            <th scope="col">Autor</th>
+
+            <th sope="col">Editorial</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let libro of libros">
+            <td>{{libro.titulo}}</td>
+            <td>{{libro.autor}}</td>
+            <td>{{libro.editorial}}</td>
+            <!-- <td><button (click)="modificaruser(forma)">Modificar</button></td> -->
+        </tr>
+    </tbody>
+</table>

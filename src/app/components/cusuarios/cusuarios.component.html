@@ -1,3 +1,117 @@
+<h3 class="display-4 text-center mb-3 text-primary">Nuevo usuario</h3>
+<h5 class="text-center"><i class="fas fa-user text-primary"></i></h5>
 
-<button (click)='altauser()' >Alta</button>
 
+
+<hr>
+<!-- 
+<form autocomplete="off" [formGroup]="form" (ngSubmit)="enviar()">
+    <tr *ngFor = "let usu of usu"> </tr>
+    <div>
+    
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="name" [(ngModel)]="usu.nombre">Nombre:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" name="" placeholder="Nombre" formControlName="name" [class.is-invalid]="validName">
+                <div *ngIf="validName" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+            
+        </div>
+    
+  
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="contraseña" [(ngModel)]="usu.password">Contraseña:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" name="" placeholder="Contrasseña" formControlName="contraseña" [class.is-invalid]="validLastName">
+                <div *ngIf="validLastName" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+        </div>
+    
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="email" [(ngModel)]="usu.email">Email:</label>
+            <div class="col-9">
+                <input class="form-control" type="email" name="" placeholder="Correo electrónico" formControlName="email" [class.is-invalid]="validEmail">
+                <div *ngIf="validEmail" class="invalid-feedback">Campo obligatorio</div>
+            </div>
+        </div>
+
+        <hr>
+
+    
+        <div class="form-group row">
+            <div type="button" class="col-12 input-group mt-3">
+                <button type="submit" class="btn btn-outline-primary btn-block" (click)="altauser()">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div *ngIf="submited" class="alert alert-success text-center" role="alert">
+    USUARIO CREADO CON ÉXITO
+  </div> -->
+
+
+<form autocomplete="off" (ngSubmit)="altauser(forma)" #forma="ngForm">
+
+    <div>
+        <input class="form-control" type="text" placeholder="Nombre" id=" validationServer01" [(ngModel)]="usu.nombre"
+            name="nombre" #nombre="ngModel" required>
+
+        <div class="invalid-feedback">
+
+            El nombre es necesario.
+
+        </div>
+    </div>
+
+    <p></p>
+
+    <div>
+        <input class="form-control" type="password" placeholder="Contrseña" id=" validationServer02" name="password"
+            [(ngModel)]="usu.password" #password="ngModel" required>
+
+        <div class="invalid-feedback">
+
+            La contraseña es necesario.
+
+        </div>
+    </div>
+
+    <p></p>
+
+    <div>
+        <input class="form-control" type="email" placeholder="Email" id=" validationServer03" name="email"
+            [(ngModel)]="usu.email" #email="ngModel" required>
+
+        <div class="invalid-feedback">
+
+            El email es necesario.
+
+        </div>
+    </div>
+    <p></p>
+    <button class="btn btn-success o" type="submit">Guardar usuario</button>
+
+</form>
+
+<p></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre
+            </th>
+            <th scope="col">Contraseña</th>
+
+            <th sope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let usuario of usuarios">
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.password}}</td>
+            <td>{{usuario.email}}</td>
+            <!-- <td><button (click)="modificaruser(forma)">Modificar</button></td> -->
+        </tr>
+    </tbody>
+</table>
