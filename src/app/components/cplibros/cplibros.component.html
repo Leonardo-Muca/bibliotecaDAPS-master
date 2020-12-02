@@ -1,1 +1,25 @@
-<p>cplibros works!</p>
+<h3 class="display-4 text-center mb-3 text-primary">Libros Disponibles</h3>
+<h5 class="text-center text-primary"><i class="fas fa-book-medical"></i></h5>
+<form autocomplete="off" #forma="ngForm">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Titulo
+                </th>
+                <th scope="col">Autor</th>
+
+                <th sope="col">Editorial</th>
+
+                <th sope="col">Estatus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let libro of libros">
+                <td>{{libro.titulo}}</td>
+                <td>{{libro.autor}}</td>
+                <td>{{libro.editorial}}</td>
+                <td>{{libro.disponible}}</td>
+                <!-- <td><button (click)="modificaruser(forma)">Modificar</button></td> -->
+            </tr>
+        </tbody>
+    </table>

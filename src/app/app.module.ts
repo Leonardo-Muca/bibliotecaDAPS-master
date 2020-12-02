@@ -15,7 +15,8 @@ import { BooksListComponent } from './components/books-list/books-list.component
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CusuariosComponent } from './components/cusuarios/cusuarios.component';
 import { ClibrosComponent } from './components/clibros/clibros.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http'
+import { CplibrosComponent } from './components/cplibros/cplibros.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http'
     BooksListComponent,
     NavbarComponent,
     CusuariosComponent,
-    ClibrosComponent
+    ClibrosComponent,
+    CplibrosComponent
   ],
   imports: [
     BrowserModule,

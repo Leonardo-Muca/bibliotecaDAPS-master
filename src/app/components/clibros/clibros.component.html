@@ -77,7 +77,7 @@
         </div>
     </div>
 
-    <p></p>
+    <p>
 
     <div>
         <input class="form-control" type="text" placeholder="Autor" id=" validationServer02" name="autor"
@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <p></p>
+    <p>
 
     <div>
         <input class="form-control" type="text" placeholder="Editorial" id=" validationServer03" name="editorial"
@@ -102,8 +102,22 @@
 
         </div>
     </div>
-    <p></p>
-    <button class="btn btn-success o" type="submit">Guardar libro</button>
+
+    <div>
+        <label>Disponible</label>
+        <input type="checkbox" placeholder="" id=" validationServer03" name="estatus" [(ngModel)]="lib.disponible"
+            #email="ngModel" required>
+
+        <div class="invalid-feedback">
+
+            El email es necesario.
+
+        </div>
+    </div>
+    <p>
+
+    <p>
+        <button class="btn btn-success o" type="submit">Guardar libro</button>
 
 </form>
 
@@ -116,6 +130,8 @@
             <th scope="col">Autor</th>
 
             <th sope="col">Editorial</th>
+
+            <th sope="col">Estatus</th>
         </tr>
     </thead>
     <tbody>
@@ -123,6 +139,7 @@
             <td>{{libro.titulo}}</td>
             <td>{{libro.autor}}</td>
             <td>{{libro.editorial}}</td>
+            <td>{{libro.disponible}}</td>
             <!-- <td><button (click)="modificaruser(forma)">Modificar</button></td> -->
         </tr>
     </tbody>

@@ -19,7 +19,8 @@ export class ClibrosComponent implements OnInit {
   lib = {
     titulo: null,
     autor: null,
-    editorial: null
+    editorial: null,
+    disponible: null
   }
 
   libros: any;
@@ -48,7 +49,7 @@ export class ClibrosComponent implements OnInit {
       forma.reset();
       this.ngOnInit();
     }).catch(err => {
-
+      console.log(err);
       alert('Ocurrio un error');
     });
   }
