@@ -8,6 +8,10 @@ import { SusuariosService } from '../../service/catalogo_usuarios/susuarios.serv
   styleUrls: ['./cmusuarios.component.css']
 })
 export class CmusuariosComponent implements OnInit {
+  form: FormGroup;
+  formData: FormData;
+  response: any = [];
+  submited: boolean = false;
   idUsuarioActualizado: any;
   @Input() set idUsuario(value) {
     this.idUsuarioActualizado = value;
@@ -44,7 +48,8 @@ export class CmusuariosComponent implements OnInit {
   modificaruser() {
     console.log(this.idUsuario);
 
-    this.susuarios.modificarusuario(this.idUsuarioActualizado, this.usuario).then((res: any) => {
+    return this.susuarios.modificarusuario(this.idUsuarioActualizado, this.usuario).then((res: any) => {
+      console.log(res);
       alert(res.msg);
       this.ngOnInit();
     }).catch(erro => {
@@ -61,7 +66,8 @@ export class CmusuariosComponent implements OnInit {
 
 
   addOther() {
-
+    this.submited = false;
+    this.form.reset();
   }
 
 }

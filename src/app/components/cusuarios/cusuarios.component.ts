@@ -15,12 +15,8 @@ export class CusuariosComponent implements OnInit {
   formData: FormData;
   response: any = [];
   submited: boolean = false;
-  idUsuarioActualizado: any;
 
-  @Input() set idUsuario(value) {
-    this.idUsuarioActualizado = value;
-    this.ngOnInit();
-  };
+  idUsuario: String;
 
   usu = {
     nombre: null,
@@ -48,7 +44,6 @@ export class CusuariosComponent implements OnInit {
 
 
   constructor(private susuarios: SusuariosService, private fB: FormBuilder) {
-    this.createForm();
   }
 
   ngOnInit(): void {
@@ -80,7 +75,7 @@ export class CusuariosComponent implements OnInit {
       alert(res.msg);
       forma.reset();
       this.ngOnInit();
-      // this.susuarios.recuperarusuarios();
+      this.mostrarRegistrar = false;
     }).catch(erro => {
       console.log(erro)
       alert('Ocurrio un error');
@@ -108,15 +103,15 @@ export class CusuariosComponent implements OnInit {
   }
 
 
-  createForm() {
-    this.form = this.fB.group({
-      // El primer valor ('') representa el valor por defecto de cada control 
-      // Como segundo estaremos agregando las validaciones
-      name: ['', [Validators.required, Validators.minLength(4)]],
-      apellido: ['', [Validators.required, Validators.minLength(4)]],
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]]
-    });
-  }
+  // createForm() {
+  //   this.form = this.fB.group({
+  //     // El primer valor ('') representa el valor por defecto de cada control 
+  //     // Como segundo estaremos agregando las validaciones
+  //     name: ['', [Validators.required, Validators.minLength(4)]],
+  //     apellido: ['', [Validators.required, Validators.minLength(4)]],
+  //     email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]]
+  //   });
+  // }
 
   // enviar() {
   //   console.log(this.form);
