@@ -104,7 +104,7 @@
             </div>
         </div>
         <p>
-        <div>
+            <!-- <div>
             <input class="form-control" type="text" placeholder="Id del usuario al que se prestara el libro(Opcional)"
                 id=" validationServer03" name="editorial" [(ngModel)]="lib.usuario" #email="ngModel" required>
 
@@ -113,7 +113,7 @@
                 La editorial es necesaria.
 
             </div>
-        </div>
+        </div> -->
         <div>
             <label>Disponible</label>
             <input type="checkbox" placeholder="" id=" validationServer03" name="estatus" [(ngModel)]="lib.disponible"
@@ -147,7 +147,7 @@
 
             <th sope="col">Estatus</th>
 
-            <th sope="col">Usuario</th>
+            <!-- <th sope="col">Usuario</th> -->
         </tr>
     </thead>
     <tbody>
@@ -156,7 +156,7 @@
             <td>{{libro.autor}}</td>
             <td>{{libro.editorial}}</td>
             <td>{{libro.disponible}}</td>
-            <td>{{libro.usuario.nombre}}</td>
+            <!-- <td>{{libro.usuario.nombre}}</td> -->
             <td><button class="btn btn-success" (click)="mostrarAgregar()">Agregar</button></td>
             <td><button class="btn btn-warning" (click)="actualizarID(libro._id)">Modificar</button></td>
             <td><button class="btn btn-danger" (click)="eliminarID(libro._id)">Eliminar</button></td>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm, Form } from '@angular/forms';
 import { SusuariosService } from '../../service/catalogo_usuarios/susuarios.service';
 
@@ -15,6 +15,12 @@ export class CusuariosComponent implements OnInit {
   formData: FormData;
   response: any = [];
   submited: boolean = false;
+  idUsuarioActualizado: any;
+
+  @Input() set idUsuario(value) {
+    this.idUsuarioActualizado = value;
+    this.ngOnInit();
+  };
 
   usu = {
     nombre: null,
@@ -26,7 +32,8 @@ export class CusuariosComponent implements OnInit {
 
   // usu: any;
 
-
+  mostrarActualizar: Boolean = false;
+  mostrarRegistrar: Boolean = false;
 
   // Getters de los controles
   // get validName() {
@@ -60,6 +67,11 @@ export class CusuariosComponent implements OnInit {
     });
   }
 
+  mostrarAgregar() {
+    this.mostrarRegistrar = true;
+    this.mostrarActualizar = false;
+  }
+
   altauser(forma: NgForm) {
     console.log(this.usu)
 
@@ -76,15 +88,25 @@ export class CusuariosComponent implements OnInit {
     });
   }
 
-  modificaruser(forma: NgForm) {
-    this.susuarios.modificaruser(this.usu).then((res: any) => {
-      alert(res.msg);
+  eliminarID(id: any) {
+    this.susuarios.desactivarusu(id).then((resp: any) => {
+      alert(resp.msg)
       this.ngOnInit();
-    }).catch(erro => {
-      console.log(erro);
-      alert('Ocurrio un error');
+    }).catch((err) => {
+      console.log(err);
+
     });
+
   }
+
+  actualizarID(id: any) {
+    console.log(id);
+    this.idUsuario = id;
+    this.mostrarActualizar = false;
+    this.mostrarActualizar = true;
+    this.mostrarRegistrar = false;
+  }
+
 
   createForm() {
     this.form = this.fB.group({

@@ -51,50 +51,53 @@
     USUARIO CREADO CON ÉXITO
   </div> -->
 
+<app-cmusuarios [idUsuario]="idUsuario" *ngIf="mostrarActualizar"></app-cmusuarios>
+<div *ngIf="mostrarRegistrar">
+    <form autocomplete="off" (ngSubmit)="altauser(forma)" #forma="ngForm">
 
-<form autocomplete="off" (ngSubmit)="altauser(forma)" #forma="ngForm">
+        <div>
+            <input class="form-control" type="text" placeholder="Nombre" id=" validationServer01"
+                [(ngModel)]="usu.nombre" name="nombre" #nombre="ngModel" required>
 
-    <div>
-        <input class="form-control" type="text" placeholder="Nombre" id=" validationServer01" [(ngModel)]="usu.nombre"
-            name="nombre" #nombre="ngModel" required>
+            <div class="invalid-feedback">
 
-        <div class="invalid-feedback">
+                El nombre es necesario.
 
-            El nombre es necesario.
-
+            </div>
         </div>
-    </div>
 
-    <p></p>
+        <p></p>
 
-    <div>
-        <input class="form-control" type="password" placeholder="Contrseña" id=" validationServer02" name="password"
-            [(ngModel)]="usu.password" #password="ngModel" required>
+        <div>
+            <input class="form-control" type="password" placeholder="Contrseña" id=" validationServer02" name="password"
+                [(ngModel)]="usu.password" #password="ngModel" required>
 
-        <div class="invalid-feedback">
+            <div class="invalid-feedback">
 
-            La contraseña es necesario.
+                La contraseña es necesario.
 
+            </div>
         </div>
-    </div>
 
-    <p></p>
+        <p></p>
 
-    <div>
-        <input class="form-control" type="email" placeholder="Email" id=" validationServer03" name="email"
-            [(ngModel)]="usu.email" #email="ngModel" required>
+        <div>
+            <input class="form-control" type="email" placeholder="Email" id=" validationServer03" name="email"
+                [(ngModel)]="usu.email" #email="ngModel" required>
 
-        <div class="invalid-feedback">
+            <div class="invalid-feedback">
 
-            El email es necesario.
+                El email es necesario.
 
+            </div>
         </div>
-    </div>
-    <p></p>
+        <p></p>
 
-    <button class="btn btn-success o" type="submit">Guardar usuario</button>
+        <button class="btn btn-success o" type="submit">Guardar usuario</button>
 
-</form>
+    </form>
+
+</div>
 
 <p></p>
 <table class="table">
@@ -112,6 +115,11 @@
             <td>{{usuario.nombre}}</td>
             <td>{{usuario.password}}</td>
             <td>{{usuario.email}}</td>
+            <td><button class="btn btn-success" (click)="mostrarAgregar()">Agregar</button></td>
+            <td><button class="btn btn-danger" (click)="eliminarID(usuario._id)">Eliminar</button></td>
+            <td><button class="btn btn-warning" (click)="actualizarID(usuario._id)">Modificar</button></td>
+
+
             <!-- <td><button (click)="modificaruser(forma)">Modificar</button></td> -->
         </tr>
     </tbody>
