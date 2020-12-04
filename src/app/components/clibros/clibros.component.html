@@ -62,64 +62,78 @@
 <div *ngIf="submited" class="alert alert-success text-center" role="alert">
     USUARIO CREADO CON ÉXITO
   </div> -->
+<app-cmlibros [idLibro]="idLibro" *ngIf="mostrarActualizar"></app-cmlibros>
 
+<div *ngIf="mostrarRegistrar">
+    <form autocomplete="off" (ngSubmit)="altalib(forma)" #forma="ngForm">
 
-<form autocomplete="off" (ngSubmit)="altalib(forma)" #forma="ngForm">
+        <div>
+            <input class="form-control" type="text" placeholder="Titulo del Libro" id=" validationServer01"
+                [(ngModel)]="lib.titulo" name="titulo" #nombre="ngModel" required>
 
-    <div>
-        <input class="form-control" type="text" placeholder="Titulo del Libro" id=" validationServer01"
-            [(ngModel)]="lib.titulo" name="titulo" #nombre="ngModel" required>
+            <div class="invalid-feedback">
 
-        <div class="invalid-feedback">
+                El nombre es necesario.
 
-            El nombre es necesario.
-
+            </div>
         </div>
-    </div>
 
-    <p>
+        <p>
 
-    <div>
-        <input class="form-control" type="text" placeholder="Autor" id=" validationServer02" name="autor"
-            [(ngModel)]="lib.autor" #password="ngModel" required>
+        <div>
+            <input class="form-control" type="text" placeholder="Autor" id=" validationServer02" name="autor"
+                [(ngModel)]="lib.autor" #password="ngModel" required>
 
-        <div class="invalid-feedback">
+            <div class="invalid-feedback">
 
-            El Autor es necesario.
+                El Autor es necesario.
 
+            </div>
         </div>
-    </div>
 
-    <p>
+        <p>
 
-    <div>
-        <input class="form-control" type="text" placeholder="Editorial" id=" validationServer03" name="editorial"
-            [(ngModel)]="lib.editorial" #email="ngModel" required>
+        <div>
+            <input class="form-control" type="text" placeholder="Editorial" id=" validationServer03" name="editorial"
+                [(ngModel)]="lib.editorial" #email="ngModel" required>
 
-        <div class="invalid-feedback">
+            <div class="invalid-feedback">
 
-            La editorial es necesaria.
+                La editorial es necesaria.
 
+            </div>
         </div>
-    </div>
+        <p>
+        <div>
+            <input class="form-control" type="text" placeholder="Id del usuario al que se prestara el libro(Opcional)"
+                id=" validationServer03" name="editorial" [(ngModel)]="lib.usuario" #email="ngModel" required>
 
-    <div>
-        <label>Disponible</label>
-        <input type="checkbox" placeholder="" id=" validationServer03" name="estatus" [(ngModel)]="lib.disponible"
-            #email="ngModel" required>
+            <div class="invalid-feedback">
 
-        <div class="invalid-feedback">
+                La editorial es necesaria.
 
-            El email es necesario.
-
+            </div>
         </div>
-    </div>
-    <p>
+        <div>
+            <label>Disponible</label>
+            <input type="checkbox" placeholder="" id=" validationServer03" name="estatus" [(ngModel)]="lib.disponible"
+                #email="ngModel" required>
 
-    <p>
-        <button class="btn btn-success o" type="submit">Guardar libro</button>
+            <div class="invalid-feedback">
 
-</form>
+                El email es necesario.
+
+            </div>
+        </div>
+        <p>
+
+        <p>
+            <button class="btn btn-success o" type="submit">Guardar libro</button>
+
+    </form>
+
+</div>
+
 
 <p></p>
 <table class="table">
@@ -132,6 +146,8 @@
             <th sope="col">Editorial</th>
 
             <th sope="col">Estatus</th>
+
+            <th sope="col">Usuario</th>
         </tr>
     </thead>
     <tbody>
@@ -140,7 +156,10 @@
             <td>{{libro.autor}}</td>
             <td>{{libro.editorial}}</td>
             <td>{{libro.disponible}}</td>
-            <!-- <td><button (click)="modificaruser(forma)">Modificar</button></td> -->
+            <td>{{libro.usuario.nombre}}</td>
+            <td><button class="btn btn-success" (click)="mostrarAgregar()">Agregar</button></td>
+            <td><button class="btn btn-warning" (click)="actualizarID(libro._id)">Modificar</button></td>
+            <td><button class="btn btn-danger" (click)="eliminarID(libro._id)">Eliminar</button></td>
         </tr>
     </tbody>
 </table>

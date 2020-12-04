@@ -13,11 +13,9 @@ export class CplibrosComponent implements OnInit {
   response: any = [];
   submited: boolean = false;
 
-  lib = {
-    titulo: null,
-    autor: null,
-    editorial: null,
-    disponible: null
+  libp = {
+    libro: null,
+    usuario: null
   }
 
   libros: any;
@@ -36,4 +34,19 @@ export class CplibrosComponent implements OnInit {
       console.log('Ha sucedido un error', erro);
     });
   }
+  altalib(forma: any) {
+    return this.splibros.altalib(this.libp).then((res: any) => {
+      console.log(res);
+      alert(res.msg);
+      forma.reset();
+      this.ngOnInit();
+      alert(res.libBD.usuario.nombre);
+    }).catch(err => {
+      console.log(err);
+      alert('Ocurrio un error');
+
+    });
+  }
+
 }
+

@@ -6,7 +6,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http'
   providedIn: 'root'
 })
 export class SplibrosService {
-  url = environment.url + '/libro';
+  url = environment.url + '/librop';
   constructor(private http: HttpClient) { }
 
   recuperarlibros() {
@@ -17,8 +17,8 @@ export class SplibrosService {
     return this.http.post(this.url, libro).toPromise();
   }
 
-  modificarlib(libro) {
-    return this.http.put(this.url, libro).toPromise();
+  modificarlib(idLibro: any, libro) {
+    return this.http.put(`${this.url}/${idLibro}`, libro).toPromise();
   }
 
 }

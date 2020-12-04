@@ -1,25 +1,47 @@
 <h3 class="display-4 text-center mb-3 text-primary">Libros Disponibles</h3>
 <h5 class="text-center text-primary"><i class="fas fa-book-medical"></i></h5>
-<form autocomplete="off" #forma="ngForm">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Titulo
-                </th>
-                <th scope="col">Autor</th>
+<form autocomplete="off" (ngSubmit)="altalib(forma)" #forma="ngForm">
 
-                <th sope="col">Editorial</th>
+    <div>
+        <input class="form-control" type="text" placeholder="Codigo del Libro" id=" validationServer01"
+            [(ngModel)]="libp.libro" name="titulo" #nombre="ngModel" required>
 
-                <th sope="col">Estatus</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let libro of libros">
-                <td>{{libro.titulo}}</td>
-                <td>{{libro.autor}}</td>
-                <td>{{libro.editorial}}</td>
-                <td>{{libro.disponible}}</td>
-                <!-- <td><button (click)="modificaruser(forma)">Modificar</button></td> -->
-            </tr>
-        </tbody>
-    </table>
+        <div class="invalid-feedback">
+
+            El nombre es necesario.
+
+        </div>
+    </div>
+
+    <p>
+    <div>
+        <input class="form-control" type="text" placeholder="Codigo del usuario" id=" validationServer01"
+            [(ngModel)]="libp.usuario" name="titulo" #nombre="ngModel" required>
+
+        <div class="invalid-feedback">
+
+            El nombre es necesario.
+
+        </div>
+    </div>
+    <p>
+    <p>
+        <button class="btn btn-success o" type="submit">Guardar libro</button>
+    <p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Libro
+            </th>
+            <th scope="col">Usuario</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let libro of libros">
+            <td>{{libro.libro.titulo}}</td>
+            <td>{{libro.usuario.nombre}}</td>
+            <!-- <td><button (click)="modificaruser(forma)">Modificar</button></td> -->
+        </tr>
+    </tbody>
+</table>

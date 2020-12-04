@@ -1,92 +1,69 @@
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SlibrosService } from '../../service/catalogo_libros/slibros.service';
 
 @Component({
-  selector: 'app-clibros',
-  templateUrl: './clibros.component.html',
-  styles: [
-  ]
+  selector: 'app-cmlibros',
+  templateUrl: './cmlibros.component.html',
+  styleUrls: ['./cmlibros.component.css']
 })
-export class ClibrosComponent implements OnInit {
+export class CmlibrosComponent implements OnInit {
 
   // variable para almacenar formulario
   form: FormGroup;
   formData: FormData;
   response: any = [];
   submited: boolean = false;
-  idLibro: String;
+  idLibroActualizado: any;
+  @Input() set idLibro(value) {
+    this.idLibroActualizado = value;
+    this.ngOnInit();
+  };
 
   lib = {
+    id: null,
     titulo: null,
     autor: null,
     editorial: null,
-    disponible: null,
-    usuario: null
+    disponible: null
   }
 
-  libros: any;
 
-  mostrarActualizar: Boolean = false;
-  mostrarRegistrar: Boolean = false;
+
+  libro: any;
 
   constructor(private slibros: SlibrosService, private fB: FormBuilder) {
 
   }
 
   ngOnInit(): void {
-    this.obtenerLibros();
+    console.log(this.idLibro, 'esto es en el componente actualizar');
+    this.obtenerLibro();
   }
 
-  obtenerLibros() {
-    this.slibros.recuperarlibros().then((res: any) => {
-      console.log(res);
-      this.libros = res.libros;
-    }).catch(erro => {
-      console.log('Ha sucedido un error', erro);
-    });
-  }
+  obtenerLibro() {
+    this.slibros.obtenerLibroID(this.idLibroActualizado).then((resp: any) => {
+      this.libro = resp.libros;
+      console.log(this.libro);
 
-  mostrarAgregar() {
-    this.mostrarRegistrar = true;
-    this.mostrarActualizar = false;
-  }
-
-  altalib(forma: any) {
-    return this.slibros.altalib(this.lib).then((res: any) => {
-      console.log(res);
-      alert(res.msg);
-      forma.reset();
-      this.ngOnInit();
-      this.mostrarRegistrar = false;
-
-    }).catch(err => {
-      console.log(err);
-      alert('Ocurrio un error');
-
-    });
-  }
-
-
-  eliminarID(id: any) {
-    this.slibros.desactivarLib(id).then((resp: any) => {
-      alert(resp.msg)
-      this.ngOnInit();
     }).catch((err) => {
       console.log(err);
 
-    });
-
+    })
   }
 
+  modificarlib() {
+    console.log(this.idLibro);
 
-  actualizarID(id: any) {
-    console.log(id);
-    this.idLibro = id;
-    this.mostrarActualizar = false;
-    this.mostrarActualizar = true;
-    this.mostrarRegistrar = false;
+    return this.slibros.modificarlib(this.idLibroActualizado, this.libro).then((res: any) => {
+      console.log(res);
+      alert(res.msg);
+
+      this.ngOnInit();
+    }).catch(err => {
+      console.log(err);
+      alert('Ocurrio un error')
+    })
   }
 
   // Getters de los controles
@@ -145,7 +122,4 @@ export class ClibrosComponent implements OnInit {
     this.submited = false;
     this.form.reset();
   }
-
-
-
-}
+} 
