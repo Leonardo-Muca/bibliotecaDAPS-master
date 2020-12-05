@@ -1,8 +1,7 @@
-<h3 class="display-4 text-center mb-3 text-primary">Nuevo libro</h3>
-<h5 class="text-center text-primary"><i class="fas fa-book-medical"></i></h5>
+<h3 class="display-4 text-center mb-3 text-primary">Nuevo libro <small><i class="fas fa-book-medical"></i></small></h3>
+<hr>
 
 <!-- <hr>
-
 <form autocomplete="off" [formGroup]="form" (ngSubmit)="enviar()">
     <div>
         
@@ -22,7 +21,6 @@
                 <div *ngIf="validAutor" class="invalid-feedback">Campo obligatorio</div>
             </div>
         </div>
-
         <div class="form-group row">
             <label class="col-3 col-form-label text-center font-weight-bold" for="editorial">Editorial:</label>
             <div class="col-9">
@@ -38,7 +36,6 @@
                 <div *ngIf="validYear" class="invalid-feedback">Campo obligatorio</div>
             </div>
         </div>
-
         <div class="form-group row">
             <label class="col-3 col-form-label text-center font-weight-bold" for="code">Código:</label>
             <div class="col-9">
@@ -46,19 +43,14 @@
                 <div *ngIf="validCode" class="invalid-feedback">Campo obligatorio</div>
             </div>
         </div>
-
         <hr>
-
-
         <div class="form-group row">
             <div type="button" class="col-12 input-group mt-3">
                 <button type="submit" class="btn btn-outline-primary btn-block">Guardar</button>
             </div>
         </div>
-
     </div>
 </form>
-
 <div *ngIf="submited" class="alert alert-success text-center" role="alert">
     USUARIO CREADO CON ÉXITO
   </div> -->
@@ -67,55 +59,61 @@
 <div *ngIf="mostrarRegistrar">
     <form autocomplete="off" (ngSubmit)="altalib(forma)" #forma="ngForm">
 
-        <div>
-            <input class="form-control" type="text" placeholder="Titulo del Libro" id=" validationServer01"
-                [(ngModel)]="lib.titulo" name="titulo" #nombre="ngModel" required>
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="titulo">Título del libro:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" placeholder="Título del libro" id=" validationServer01"
+                    [(ngModel)]="lib.titulo" name="titulo" #nombre="ngModel" required>
 
-            <div class="invalid-feedback">
+                <div class="invalid-feedback">
 
-                El nombre es necesario.
+                    El nombre es necesario.
 
+                </div>
             </div>
         </div>
 
         <p>
 
-        <div>
-            <input class="form-control" type="text" placeholder="Autor" id=" validationServer02" name="autor"
-                [(ngModel)]="lib.autor" #password="ngModel" required>
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="autor">Autor:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" placeholder="Autor" id=" validationServer02" name="autor"
+                    [(ngModel)]="lib.autor" #password="ngModel" required>
 
-            <div class="invalid-feedback">
+                <div class="invalid-feedback">
 
-                El Autor es necesario.
+                    El Autor es necesario.
 
+                </div>
             </div>
         </div>
 
         <p>
 
-        <div>
-            <input class="form-control" type="text" placeholder="Editorial" id=" validationServer03" name="editorial"
-                [(ngModel)]="lib.editorial" #email="ngModel" required>
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold" for="editorial">Editorial:</label>
+            <div class="col-9">
+                <input class="form-control" type="text" placeholder="Editorial" id=" validationServer03"
+                    name="editorial" [(ngModel)]="lib.editorial" #email="ngModel" required>
 
-            <div class="invalid-feedback">
+                <div class="invalid-feedback">
 
-                La editorial es necesaria.
+                    La editorial es necesaria.
 
+                </div>
             </div>
         </div>
         <p>
             <!-- <div>
             <input class="form-control" type="text" placeholder="Id del usuario al que se prestara el libro(Opcional)"
                 id=" validationServer03" name="editorial" [(ngModel)]="lib.usuario" #email="ngModel" required>
-
             <div class="invalid-feedback">
-
                 La editorial es necesaria.
-
             </div>
         </div> -->
-        <div>
-            <label>Disponible</label>
+        <div class="form-group row">
+            <label class="col-3 col-form-label text-center font-weight-bold">Disponible:</label>
             <input type="checkbox" placeholder="" id=" validationServer03" name="estatus" [(ngModel)]="lib.disponible"
                 #email="ngModel" required>
 
@@ -128,7 +126,8 @@
         <p>
 
         <p>
-            <button class="btn btn-success o" type="submit">Guardar libro</button>
+            <button class="btn btn-outline-success btn-block pt-2" type="submit">Guardar libro <i
+                    class="fas fa-check-circle"></i></button>
 
     </form>
 
@@ -136,16 +135,16 @@
 
 
 <p></p>
-<table class="table">
+<table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th scope="col">Titulo
-            </th>
-            <th scope="col">Autor</th>
-
-            <th sope="col">Editorial</th>
-
-            <th sope="col">Estatus</th>
+            <th class="text-center" scope="col">Título</th>
+            <th class="text-center" scope="col">Autor</th>
+            <th class="text-center" sope="col">Editorial</th>
+            <th class="text-center" sope="col">Estatus</th>
+            <th class="text-center" sope="col">Agregar</th>
+            <th class="text-center" sope="col">Modificar</th>
+            <th class="text-center" sope="col">Eliminar</th>
 
             <!-- <th sope="col">Usuario</th> -->
         </tr>
@@ -157,9 +156,12 @@
             <td>{{libro.editorial}}</td>
             <td>{{libro.disponible}}</td>
             <!-- <td>{{libro.usuario.nombre}}</td> -->
-            <td><button class="btn btn-success" (click)="mostrarAgregar()">Agregar</button></td>
-            <td><button class="btn btn-warning" (click)="actualizarID(libro._id)">Modificar</button></td>
-            <td><button class="btn btn-danger" (click)="eliminarID(libro._id)">Eliminar</button></td>
+            <td><button class="btn btn-outline-success" (click)="mostrarAgregar()">Agregar <i
+                        class="fas fa-plus-square"></i></button></td>
+            <td><button class="btn btn-outline-warning" (click)="actualizarID(libro._id)">Modificar <i
+                        class="fas fa-exchange-alt"></i></button></td>
+            <td><button class="btn btn-outline-danger" (click)="eliminarID(libro._id)">Eliminar <i
+                        class="fas fa-trash-alt"></i></button></td>
         </tr>
     </tbody>
 </table>
